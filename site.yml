@@ -1,0 +1,14 @@
+---
+#create Jenkins server
+- hosts: jenkinsserver
+  remote_user: root
+
+  tasks: 
+    - name: Download jenkins war
+      get_url:
+        url: http://ftp-nyc.osuosl.org/pub/jenkins/war-stable/2.46.2/jenkins.war
+        dest: /home/tomcat/apache-tomcat-8.5.14/webapps
+      become: true
+      become_user: tomcat
+      become_method: su
+...
